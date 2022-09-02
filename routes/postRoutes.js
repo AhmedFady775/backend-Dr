@@ -17,7 +17,7 @@ postRouter.get("/:id", async (req, res) => {
   }
 });
 
-postRouter.post("/createPost", async (req, res) => {
+postRouter.post("/createPost", isAuth, async (req, res) => {
   const newPost = new Post({
     name: req.body.name,
     date: req.body.date,
@@ -30,6 +30,16 @@ postRouter.post("/createPost", async (req, res) => {
   });
   const post = await newPost.save();
   res.send({ message: "Post Created", post });
+});
+
+postRouter.delete("/:id", isAuth, async (req, res) => {
+  const post = await Post.findById(req.params.id);
+  if (post) {
+    await post.remove();
+    res.send({ message: "Post Deleted" });
+  } else {
+    res.status(404).send({ message: "Post Not Found" });
+  }
 });
 
 export default postRouter;
