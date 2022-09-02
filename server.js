@@ -5,6 +5,7 @@ import seedRouter from "./routes/seedRoutes.js";
 import userRouter from "./routes/userRoutes.js";
 import postRouter from "./routes/postRoutes.js";
 import uploadRouter from "./routes/uploadRoutes.js";
+import cors from "cors";
 
 dotenv.config();
 
@@ -18,14 +19,17 @@ mongoose
   });
 
 const app = express();
+app.use(cors());
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  res.header(
+    "Access-Control-Allow-Headers, *, Access-Control-Allow-Origin",
+    "Origin, X-Requested-with, Content_Type,Accept,Authorization",
+    "http://localhost:4200"
   );
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
-
+  if (req.method === "OPTIONS") {
+    res.header("Access-Control-Allow-Methods", "PUT,POST,PATCH,DELETE,GET");
+    return res.status(200).json({});
+  }
   next();
 });
 app.use(express.json());
