@@ -32,7 +32,7 @@ postRouter.post("/createPost", async (req, res) => {
   res.send({ message: "Post Created", post });
 });
 
-postRouter.delete("/:id", async (req, res) => {
+postRouter.delete("delete/:id", async (req, res) => {
   const post = await Post.findById(req.params.id);
   if (post) {
     await post.remove();
