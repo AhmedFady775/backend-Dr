@@ -42,4 +42,22 @@ postRouter.delete("/delete/:id", async (req, res) => {
   }
 });
 
+postRouter.put("/update/:id", async (req, res) => {
+  const post = await Post.findById(req.params.id);
+  if (post) {
+    post.name = req.body.name;
+    post.date = req.body.date;
+    post.image = req.body.image;
+    post.images = req.body.images;
+    post.videos = req.body.images;
+    post.description = req.body.description;
+    post.subject = req.body.subject;
+    post.status = req.body.status;
+    await product.save();
+    res.send({ message: "Post Updated" });
+  } else {
+    res.status(404).send({ message: "Post Not Found" });
+  }
+});
+
 export default postRouter;
