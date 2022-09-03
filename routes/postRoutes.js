@@ -53,7 +53,7 @@ postRouter.put("/update/:id", async (req, res) => {
     post.description = req.body.description;
     post.subject = req.body.subject;
     post.status = req.body.status;
-    await product.save();
+    await post.save();
     res.send({ message: "Post Updated" });
   } else {
     res.status(404).send({ message: "Post Not Found" });
