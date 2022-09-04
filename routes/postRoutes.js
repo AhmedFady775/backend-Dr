@@ -26,7 +26,7 @@ postRouter.post("/createPost", async (req, res) => {
     videos: req.body.images,
     description: req.body.description,
     subject: req.body.subject,
-    status: false,
+    status: req.body.status,
   });
   const post = await newPost.save();
   res.send({ message: "Post Created", post });

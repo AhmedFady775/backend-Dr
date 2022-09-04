@@ -9,7 +9,7 @@ const postSchema = new mongoose.Schema(
     videos: [String],
     description: { type: String },
     subject: { type: String },
-    status: { type: Boolean },
+    status: { type: String },
   },
   {
     timestamps: true,
