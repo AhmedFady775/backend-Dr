@@ -23,7 +23,7 @@ postRouter.post("/createPost", async (req, res) => {
     date: req.body.date,
     image: req.body.image,
     images: req.body.images,
-    videos: req.body.images,
+    videos: req.body.videos,
     description: req.body.description,
     subject: req.body.subject,
     status: req.body.status,
@@ -49,7 +49,7 @@ postRouter.put("/update/:id", async (req, res) => {
     post.date = req.body.date;
     post.image = req.body.image;
     post.images = req.body.images;
-    post.videos = req.body.images;
+    post.videos = req.body.videos;
     post.description = req.body.description;
     post.subject = req.body.subject;
     post.status = req.body.status;
