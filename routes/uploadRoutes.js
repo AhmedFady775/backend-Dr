@@ -14,7 +14,7 @@ uploadRouter.post("/", upload.single("file"), async (req, res) => {
       api_key: process.env.CLOUDINARY_API_KEY,
       api_secret: process.env.CLOUDINARY_API_SECRET,
     });
-    const config = { folder: "secrety", resource_type: "auto" };
+    const config = { folder: "Photos and Videos", resource_type: "auto" };
 
     const streamUpload = (req) => {
       return new Promise((resolve, reject) => {
