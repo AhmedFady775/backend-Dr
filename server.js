@@ -5,6 +5,7 @@ import userRouter from "./routes/userRoutes.js";
 import postRouter from "./routes/postRoutes.js";
 import uploadRouter from "./routes/uploadRoutes.js";
 import cors from "cors";
+import path from "path";
 
 dotenv.config();
 
@@ -30,11 +31,11 @@ app.use(
   )
 );
 
-const __dirname = path.resolve();
-app.use(express.static(path.join(__dirname, "/frontend/build")));
-app.get("*", (req, res) =>
-  res.sendFile(path.join(__dirname, "/frontend/build/index.html"))
-);
+app.use(express.static(path.join(__dirname, "build")));
+
+app.get("/*", function (req, res) {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
 // app.use((req, res, next) => {
 //   if (req.method === "PUT,POST,PATCH,DELETE,GET,OPTIONS") {
