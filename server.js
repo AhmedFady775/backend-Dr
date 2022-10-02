@@ -31,11 +31,6 @@ app.use(
   )
 );
 
-const __dirname = path.resolve();
-app.use(express.static(path.join(__dirname, "/build")));
-app.get("*", (req, res) =>
-  res.sendFile(path.join(__dirname, "build", "index.html"))
-);
 // app.use((req, res, next) => {
 //   if (req.method === "PUT,POST,PATCH,DELETE,GET,OPTIONS") {
 //     res.header(
