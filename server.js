@@ -5,7 +5,6 @@ import userRouter from "./routes/userRoutes.js";
 import postRouter from "./routes/postRoutes.js";
 import uploadRouter from "./routes/uploadRoutes.js";
 import cors from "cors";
-import path from "path";
 
 dotenv.config();
 
@@ -30,7 +29,6 @@ app.use(
     }
   )
 );
-
 // app.use((req, res, next) => {
 //   if (req.method === "PUT,POST,PATCH,DELETE,GET,OPTIONS") {
 //     res.header(
